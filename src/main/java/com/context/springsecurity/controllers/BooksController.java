@@ -21,7 +21,6 @@ public class BooksController {
     @Autowired
     private BookRepository bookRepository;
 
-
     @PostMapping("/")
     @ResponseBody
     public ResponseEntity<?> createNewBook(@Valid @RequestBody Books bookRequest) {
