@@ -1,6 +1,6 @@
 package com.context.springsecurity.security.services;
 
-import com.context.springsecurity.models.User;
+import com.context.springsecurity.domain.User;
 import com.context.springsecurity.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

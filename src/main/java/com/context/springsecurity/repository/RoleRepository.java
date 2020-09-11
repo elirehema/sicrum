@@ -2,8 +2,8 @@ package com.context.springsecurity.repository;
 
 import java.util.Optional;
 
-import com.context.springsecurity.models.ERole;
-import com.context.springsecurity.models.Role;
+import com.context.springsecurity.domain.ERole;
+import com.context.springsecurity.domain.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,7 @@
 package com.context.springsecurity;
 
-import com.context.springsecurity.models.ERole;
-import com.context.springsecurity.models.Role;
+import com.context.springsecurity.domain.ERole;
+import com.context.springsecurity.domain.Role;
 import com.context.springsecurity.repository.RoleRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;

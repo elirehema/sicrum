@@ -1,9 +1,7 @@
-package com.context.springsecurity.models;
+package com.context.springsecurity.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one

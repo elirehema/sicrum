@@ -1,7 +1,6 @@
 package com.context.springsecurity.controllers;
 
-import com.context.springsecurity.models.Books;
-import com.context.springsecurity.payload.request.SignupRequest;
+import com.context.springsecurity.domain.Books;
 import com.context.springsecurity.payload.response.MessageResponse;
 import com.context.springsecurity.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;

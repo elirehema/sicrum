@@ -1,6 +1,6 @@
 package com.context.springsecurity.repository;
 
-import com.context.springsecurity.models.Books;
+import com.context.springsecurity.domain.Books;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

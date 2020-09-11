@@ -7,9 +7,9 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-import com.context.springsecurity.models.ERole;
-import com.context.springsecurity.models.Role;
-import com.context.springsecurity.models.User;
+import com.context.springsecurity.domain.ERole;
+import com.context.springsecurity.domain.Role;
+import com.context.springsecurity.domain.User;
 import com.context.springsecurity.payload.request.LoginRequest;
 import com.context.springsecurity.payload.request.SignupRequest;
 import com.context.springsecurity.payload.response.JwtResponse;
