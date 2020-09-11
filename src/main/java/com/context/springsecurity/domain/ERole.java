@@ -1,4 +1,4 @@
-package com.context.springsecurity.models;
+package com.context.springsecurity.domain;
 
 public enum ERole {
 	ROLE_USER,

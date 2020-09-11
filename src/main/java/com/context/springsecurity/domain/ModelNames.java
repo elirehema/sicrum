@@ -1,4 +1,4 @@
-package com.context.springsecurity.models;
+package com.context.springsecurity.domain;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
