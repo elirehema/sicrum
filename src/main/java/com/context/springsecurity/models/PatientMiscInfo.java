@@ -1,5 +1,8 @@
 package com.context.springsecurity.models;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements. See the NOTICE file
@@ -18,5 +21,39 @@ package com.context.springsecurity.models;
  * specific language governing permissions and limitations
  * under the License.
  */
+@Entity
+@Table(name = ModelNames.MISC_INFO_TABLE)
 public class PatientMiscInfo {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+
+    @Column(length = 200)
+    private String  citizenShip;
+
+    @Column(length = 100)
+    private String  medical_enrollment;
+
+    @Column(length = 60)
+    private String  employment;
+
+    @Column(length = 60)
+    private String  school;
+
+    @Column(length = 60)
+    private String  rehabilitation;
+
+    public PatientMiscInfo(){}
+    public PatientMiscInfo(String citizenShip, String medical_enrollment, String employment, String school, String rehabilitation) {
+        this.citizenShip = citizenShip;
+        this.medical_enrollment = medical_enrollment;
+        this.employment = employment;
+        this.school = school;
+        this.rehabilitation = rehabilitation;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }

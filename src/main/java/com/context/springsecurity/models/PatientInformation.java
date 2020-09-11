@@ -1,5 +1,10 @@
 package com.context.springsecurity.models;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements. See the NOTICE file
@@ -18,5 +23,84 @@ package com.context.springsecurity.models;
  * specific language governing permissions and limitations
  * under the License.
  */
+@Entity
+@Table(name = ModelNames.PATIENT_INFO_TABLE)
 public class PatientInformation {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank
+    @Column(length = 20)
+    private String first_name;
+
+    @NotBlank
+    @Column(length = 20)
+    private String middle_name;
+
+    @NotBlank
+    @Column(length = 20)
+    private String last_name;
+
+    @NotBlank
+    @Column(length = 20)
+    private String suffix;
+
+    @NotBlank
+    @Column(length = 20)
+    private String ethnicity;
+
+    @NotBlank
+    @Column(length = 50)
+    private String DOB;
+
+    @NotBlank
+    @Column(length = 5)
+    private String gender;
+
+    @NotBlank
+    @Column(length = 20)
+    private String ssn;
+
+    @NotBlank
+    @Column(length = 20)
+    private String mdn;
+
+    @NotBlank
+    @Column(length = 200)
+    private String principal_tribe;
+
+    @NotBlank
+    @Column(length = 20)
+    private String country;
+
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinTable(	name = ModelNames.CONTACTS_INFO_TABLE,
+            joinColumns = @JoinColumn(name = "patient_id"),
+            inverseJoinColumns = @JoinColumn(name = "contact_id"))
+    private ContactsInformation roles = new ContactsInformation();
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinTable(	name = ModelNames.MISC_INFO_TABLE,
+            joinColumns = @JoinColumn(name = "patient_id"),
+            inverseJoinColumns = @JoinColumn(name = "misc_id"))
+    private PatientMiscInfo patientMiscInfo = new PatientMiscInfo();
+
+
+    public PatientInformation(){}
+    public PatientInformation(String first_name, String middle_name, String last_name, String suffix, String ethnicity,  String DOB,  String gender, String ssn,  String MDN, String principal_tribe) {
+        this.first_name = first_name;
+        this.middle_name = middle_name;
+        this.last_name = last_name;
+        this.suffix = suffix;
+        this.ethnicity = ethnicity;
+        this.DOB = DOB;
+        this.gender = gender;
+        this.ssn = ssn;
+        this.mdn = MDN;
+        this.principal_tribe = principal_tribe;
+    }
+
 }
