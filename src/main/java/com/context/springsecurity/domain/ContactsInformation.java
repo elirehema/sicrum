@@ -1,5 +1,8 @@
 package com.context.springsecurity.domain;
 
+import com.context.springsecurity.constants.ModelNamesConstants;
+import com.context.springsecurity.patient.domain.PatientInformation;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
@@ -22,10 +25,10 @@ import javax.validation.constraints.NotBlank;
  * under the License.
  */
 @Entity
-@Table(name = ModelNames.CONTACTS_INFO_TABLE)
+@Table(name = ModelNamesConstants.CONTACTS_INFO_TABLE)
 public class ContactsInformation {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(length = 2)
@@ -54,6 +57,11 @@ public class ContactsInformation {
 
     @Column(length = 20)
     private String work_phone_number;
+
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "id")
+    private PatientInformation patientInformation;
 
     public ContactsInformation(){}
     public ContactsInformation(String isReachable, @NotBlank String email_address, String ZIP_CODE, String city, String state, String physical_address, String home_phone_no, String work_phone_number) {

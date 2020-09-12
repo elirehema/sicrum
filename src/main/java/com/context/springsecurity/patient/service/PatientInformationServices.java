@@ -1,4 +1,9 @@
-package com.context.springsecurity.domain;
+package com.context.springsecurity.patient.service;
+
+import com.context.springsecurity.patient.domain.PatientInformation;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -18,8 +23,12 @@ package com.context.springsecurity.domain;
  * specific language governing permissions and limitations
  * under the License.
  */
-public class ModelNames {
-    public static final String PATIENT_INFO_TABLE = "m_patient_info";
-    public static final String MISC_INFO_TABLE = "m_misc_info";
-    public static final String CONTACTS_INFO_TABLE = "m_contacts";
+@Component
+public interface PatientInformationServices {
+    public List<PatientInformation> retrieveAllPatients();
+
+    public PatientInformation createNewPatient(PatientInformation patientInformation);
+
+    public List<PatientInformation> createByPatientListIterate(List<PatientInformation> patientInformationList);
+
 }
