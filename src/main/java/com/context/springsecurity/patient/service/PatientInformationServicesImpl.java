@@ -1,5 +1,6 @@
 package com.context.springsecurity.patient.service;
 
+import com.context.springsecurity.contacts.domain.ContactsInformation;
 import com.context.springsecurity.patient.domain.PatientInformation;
 import com.context.springsecurity.patient.repository.PatientInformationRepository;
 import com.context.springsecurity.repository.BookRepository;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -45,5 +47,22 @@ public class PatientInformationServicesImpl implements PatientInformationService
     @Override
     public List<PatientInformation> createByPatientListIterate(List<PatientInformation> patientInformationList) {
         return patientInformationRepository.saveAll(patientInformationList);
+    }
+
+    @Override
+    public Optional<PatientInformation> retrievePatientById(Long id) {
+        return patientInformationRepository.findById(id);
+    }
+
+    @Override
+    public PatientInformation updatePatientContacts(PatientInformation patientInformation) {
+         patientInformationRepository.findById(patientInformation.getId()).map(patientInformation1 -> {
+            PatientInformation patientInformation2 = patientInformation1;
+            patientInformation2.setContactsInformation(patientInformation.getContactsInformation());
+            return patientInformationRepository.save(patientInformation2);
+        }).orElseGet(()->{
+            return null;
+         });
+         return null;
     }
 }

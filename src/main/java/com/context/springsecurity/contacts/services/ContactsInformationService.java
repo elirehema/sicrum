@@ -1,10 +1,12 @@
-package com.context.springsecurity.patient.service;
+package com.context.springsecurity.contacts.services;
 
+import com.context.springsecurity.contacts.domain.ContactsInformation;
 import com.context.springsecurity.patient.domain.PatientInformation;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -24,15 +26,11 @@ import java.util.Optional;
  * specific language governing permissions and limitations
  * under the License.
  */
-@Component
-public interface PatientInformationServices {
-    public List<PatientInformation> retrieveAllPatients();
 
-    public PatientInformation createNewPatient(PatientInformation patientInformation);
-
-    public List<PatientInformation> createByPatientListIterate(List<PatientInformation> patientInformationList);
-
-    public Optional<PatientInformation> retrievePatientById(Long id);
-
-    public PatientInformation updatePatientContacts(PatientInformation patientInformation);
+@Controller
+@Service
+public interface ContactsInformationService {
+    public PatientInformation createNewContact(ContactsInformation contactsInformation);
+    public List<ContactsInformation> retrieveAllContactsInformation();
+    public List<ContactsInformation> createNewContactsByIteration(List<ContactsInformation> contactsInformationList);
 }

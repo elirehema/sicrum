@@ -1,10 +1,7 @@
-package com.context.springsecurity.patient.service;
+package com.context.springsecurity.contacts.repository;
 
-import com.context.springsecurity.patient.domain.PatientInformation;
-import org.springframework.stereotype.Component;
-
-import java.util.List;
-import java.util.Optional;
+import com.context.springsecurity.contacts.domain.ContactsInformation;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -24,15 +21,6 @@ import java.util.Optional;
  * specific language governing permissions and limitations
  * under the License.
  */
-@Component
-public interface PatientInformationServices {
-    public List<PatientInformation> retrieveAllPatients();
+public interface ContactsInformationRepository extends JpaRepository<ContactsInformation, Long> {
 
-    public PatientInformation createNewPatient(PatientInformation patientInformation);
-
-    public List<PatientInformation> createByPatientListIterate(List<PatientInformation> patientInformationList);
-
-    public Optional<PatientInformation> retrievePatientById(Long id);
-
-    public PatientInformation updatePatientContacts(PatientInformation patientInformation);
 }

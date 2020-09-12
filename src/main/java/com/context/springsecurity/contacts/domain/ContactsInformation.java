@@ -1,4 +1,4 @@
-package com.context.springsecurity.domain;
+package com.context.springsecurity.contacts.domain;
 
 import com.context.springsecurity.constants.ModelNamesConstants;
 import com.context.springsecurity.patient.domain.PatientInformation;
@@ -40,7 +40,7 @@ public class ContactsInformation {
 
 
     @Column(length = 20)
-    private String ZIP_CODE;
+    private String zipcode;
 
     @Column(length = 20)
     private String city;
@@ -53,10 +53,10 @@ public class ContactsInformation {
     private String physical_address;
 
     @Column(length = 50)
-    private String home_phone_no;
+    private String home_phone;
 
     @Column(length = 20)
-    private String work_phone_number;
+    private String work_phone;
 
     @OneToOne
     @MapsId
@@ -64,15 +64,15 @@ public class ContactsInformation {
     private PatientInformation patientInformation;
 
     public ContactsInformation(){}
-    public ContactsInformation(String isReachable, @NotBlank String email_address, String ZIP_CODE, String city, String state, String physical_address, String home_phone_no, String work_phone_number) {
+    public ContactsInformation(String isReachable, @NotBlank String email_address, String zipcode, String city, String state, String physical_address, String home_phone, String work_phone) {
         this.isReachable = isReachable;
         this.email_address = email_address;
-        this.ZIP_CODE = ZIP_CODE;
+        this.zipcode = zipcode;
         this.city = city;
         this.state = state;
         this.physical_address = physical_address;
-        this.home_phone_no = home_phone_no;
-        this.work_phone_number = work_phone_number;
+        this.home_phone = home_phone;
+        this.work_phone = work_phone;
     }
 
     public Long getId() {
@@ -91,8 +91,8 @@ public class ContactsInformation {
         return isReachable;
     }
 
-    public String getHome_phone_no() {
-        return home_phone_no;
+    public String gethome_phone() {
+        return home_phone;
     }
 
     public String getPhysical_address() {
@@ -103,11 +103,11 @@ public class ContactsInformation {
         return state;
     }
 
-    public String getZIP_CODE() {
-        return ZIP_CODE;
+    public String getZipcode() {
+        return zipcode;
     }
 
-    public String getWork_phone_number() {
-        return work_phone_number;
+    public String getwork_phone() {
+        return work_phone;
     }
 }
