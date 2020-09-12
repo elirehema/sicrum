@@ -1,4 +1,7 @@
-package com.context.springsecurity.domain;
+package com.context.springsecurity.patient.domain;
+
+import com.context.springsecurity.constants.ModelNamesConstants;
+import com.context.springsecurity.domain.ContactsInformation;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -22,7 +25,7 @@ import javax.validation.constraints.NotBlank;
  * under the License.
  */
 @Entity
-@Table(name = ModelNames.PATIENT_INFO_TABLE)
+@Table(name = ModelNamesConstants.PATIENT_INFO_TABLE)
 public class PatientInformation {
 
     @Id
@@ -51,7 +54,7 @@ public class PatientInformation {
 
     @NotBlank
     @Column(length = 50)
-    private String DOB;
+    private String dob;
 
     @NotBlank
     @Column(length = 5)
@@ -73,32 +76,80 @@ public class PatientInformation {
     @Column(length = 20)
     private String country;
 
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinTable(	name = ModelNames.CONTACTS_INFO_TABLE,
-            joinColumns = @JoinColumn(name = "patient_id"),
-            inverseJoinColumns = @JoinColumn(name = "contact_id"))
-    private ContactsInformation roles = new ContactsInformation();
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinTable(	name = ModelNames.MISC_INFO_TABLE,
-            joinColumns = @JoinColumn(name = "patient_id"),
-            inverseJoinColumns = @JoinColumn(name = "misc_id"))
-    private PatientMiscInfo patientMiscInfo = new PatientMiscInfo();
+    @OneToOne(
+            mappedBy = "patientInformation" ,
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+    )
+    private PatientMiscInfo patientMiscInfo;
+    @OneToOne(
+            mappedBy = "patientInformation" ,
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+    )
+    private ContactsInformation contactsInformation;
 
 
     public PatientInformation(){}
-    public PatientInformation(String first_name, String middle_name, String last_name, String suffix, String ethnicity,  String DOB,  String gender, String ssn,  String MDN, String principal_tribe) {
+    public PatientInformation(String first_name, String middle_name, String last_name, String suffix, String ethnicity,  String dob,  String gender, String ssn,  String MDN, String principal_tribe) {
         this.first_name = first_name;
         this.middle_name = middle_name;
         this.last_name = last_name;
         this.suffix = suffix;
         this.ethnicity = ethnicity;
-        this.DOB = DOB;
+        this.dob = dob;
         this.gender = gender;
         this.ssn = ssn;
         this.mdn = MDN;
         this.principal_tribe = principal_tribe;
     }
+    public Long getId() {
+        return id;
+    }
+
+    public String getFirst_name() {
+        return first_name;
+    }
+
+    public String getMiddle_name() {
+        return middle_name;
+    }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public String getSuffix() {
+        return suffix;
+    }
+
+    public String getEthnicity() {
+        return ethnicity;
+    }
+
+    public String getDOB() {
+        return dob;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getSsn() {
+        return ssn;
+    }
+
+    public String getMdn() {
+        return mdn;
+    }
+
+    public String getPrincipal_tribe() {
+        return principal_tribe;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
 
 }
