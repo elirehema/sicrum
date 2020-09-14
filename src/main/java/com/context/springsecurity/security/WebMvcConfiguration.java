@@ -1,12 +1,11 @@
-package com.context.springsecurity.contacts.services;
+package com.context.springsecurity.security;
 
-import com.context.springsecurity.contacts.domain.ContactsInformation;
-import com.context.springsecurity.patient.domain.PatientInformation;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
+import org.hibernate.criterion.Order;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.core.Ordered;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -26,10 +25,13 @@ import java.util.List;
  * specific language governing permissions and limitations
  * under the License.
  */
+@EnableWebMvc
+@ComponentScan("com.context.*")
+public class WebMvcConfiguration  implements WebMvcConfigurer {
 
-@Controller
-public interface ContactsInformationService {
-    public ContactsInformation createNewContact(ContactsInformation contactsInformation);
-    public List<ContactsInformation> retrieveAllContactsInformation();
-    public List<ContactsInformation> createNewContactsByIteration(List<ContactsInformation> contactsInformationList);
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/login").setViewName("login");
+        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
+    }
 }

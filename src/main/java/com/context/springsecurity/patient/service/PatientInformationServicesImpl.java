@@ -1,6 +1,7 @@
 package com.context.springsecurity.patient.service;
 
 import com.context.springsecurity.contacts.domain.ContactsInformation;
+import com.context.springsecurity.contacts.services.ContactsInformationService;
 import com.context.springsecurity.patient.domain.PatientInformation;
 import com.context.springsecurity.patient.repository.PatientInformationRepository;
 import com.context.springsecurity.repository.BookRepository;
@@ -34,6 +35,9 @@ public class PatientInformationServicesImpl implements PatientInformationService
     @Autowired
     private PatientInformationRepository patientInformationRepository;
 
+    @Autowired
+    ContactsInformationService contactsInformationService;
+
     @Override
     public List<PatientInformation> retrieveAllPatients() {
         return patientInformationRepository.findAll();
@@ -55,14 +59,12 @@ public class PatientInformationServicesImpl implements PatientInformationService
     }
 
     @Override
-    public PatientInformation updatePatientContacts(PatientInformation patientInformation) {
-         patientInformationRepository.findById(patientInformation.getId()).map(patientInformation1 -> {
-            PatientInformation patientInformation2 = patientInformation1;
-            patientInformation2.setContactsInformation(patientInformation.getContactsInformation());
-            return patientInformationRepository.save(patientInformation2);
-        }).orElseGet(()->{
-            return null;
+    public PatientInformation updatePatientContacts(PatientInformation patientInformationRequest) {
+          patientInformationRepository.findById(patientInformationRequest.getId()).map(it-> {
+          // contactsInformationService.createNewContact(patientInformationRequest.getContactsInformation());
+           return null;
          });
-         return null;
+
+          return patientInformationRequest;
     }
 }

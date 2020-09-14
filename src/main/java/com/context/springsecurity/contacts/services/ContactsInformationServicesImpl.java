@@ -41,12 +41,11 @@ public class ContactsInformationServicesImpl implements ContactsInformationServi
     PatientInformationServices patientInformationServices;
 
     @Override
-    public PatientInformation createNewContact(ContactsInformation contactsInformation) {
-        Optional<PatientInformation> patientInformationOptional = patientInformationServices.retrievePatientById(contactsInformation.getId());
-        PatientInformation patientInformation = patientInformationOptional.get();
-        patientInformation.setContactsInformation(contactsInformation);
-        patientInformationServices.updatePatientContacts(patientInformation);
-        return patientInformation;
+    public ContactsInformation createNewContact(ContactsInformation contactsInformation) {
+        PatientInformation patientInformation = patientInformationServices.retrievePatientById(contactsInformation.getId()).get();
+        contactsInformation.setPatientInformation(patientInformation);
+        contactsInformation.setId(patientInformation.getId());
+       return contactsInformationRepository.save(contactsInformation);
     }
 
     @Override

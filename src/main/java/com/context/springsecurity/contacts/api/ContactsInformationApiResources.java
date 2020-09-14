@@ -44,7 +44,7 @@ public class ContactsInformationApiResources {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     @ResponseBody
-    PatientInformation createNew(@Valid @RequestBody ContactsInformation contactsInformationRequest) {
+    ContactsInformation createNew(@Valid @RequestBody ContactsInformation contactsInformationRequest) {
         return contactsInformationService.createNewContact(contactsInformationRequest);
     }
 

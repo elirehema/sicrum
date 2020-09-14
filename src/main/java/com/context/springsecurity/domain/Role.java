@@ -1,5 +1,7 @@
 package com.context.springsecurity.domain;
 
+import com.context.springsecurity.enums.RoleEnums;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,13 +14,13 @@ public class Role {
 
 	@Enumerated(EnumType.STRING)
 	@Column(length = 20)
-	private ERole name;
+	private RoleEnums name;
 
 	public Role() {
 
 	}
 
-	public Role(ERole name) {
+	public Role(RoleEnums name) {
 		this.name = name;
 	}
 
@@ -30,11 +32,11 @@ public class Role {
 		this.id = id;
 	}
 
-	public ERole getName() {
+	public RoleEnums getName() {
 		return name;
 	}
 
-	public void setName(ERole name) {
+	public void setName(RoleEnums name) {
 		this.name = name;
 	}
 }
