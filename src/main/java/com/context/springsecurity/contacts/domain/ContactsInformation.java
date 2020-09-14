@@ -64,7 +64,10 @@ public class ContactsInformation {
     private PatientInformation patientInformation;
 
     public ContactsInformation(){}
-    public ContactsInformation(String isReachable, @NotBlank String email_address, String zipcode, String city, String state, String physical_address, String home_phone, String work_phone) {
+    public ContactsInformation(
+            Long id, String isReachable, @NotBlank String email_address, String zipcode, String city,
+            String state, String physical_address, String home_phone, String work_phone,PatientInformation patientInformation) {
+        this.id = id;
         this.isReachable = isReachable;
         this.email_address = email_address;
         this.zipcode = zipcode;
@@ -73,6 +76,7 @@ public class ContactsInformation {
         this.physical_address = physical_address;
         this.home_phone = home_phone;
         this.work_phone = work_phone;
+        this.patientInformation = patientInformation;
     }
 
     public Long getId() {
@@ -109,5 +113,17 @@ public class ContactsInformation {
 
     public String getwork_phone() {
         return work_phone;
+    }
+
+    public PatientInformation getPatientInformation() {
+        return patientInformation;
+    }
+
+    public void setPatientInformation(PatientInformation patientInformation) {
+        this.patientInformation = patientInformation;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

@@ -87,6 +87,7 @@ public class PatientInformation {
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )
+    @JoinColumn(unique = true)
     private ContactsInformation contactsInformation;
 
 
@@ -94,7 +95,7 @@ public class PatientInformation {
     public PatientInformation(
             String first_name, String middle_name, String last_name, String suffix,
             String ethnicity,  String dob,  String gender, String ssn,  String MDN,
-            String principal_tribe) {
+            String principal_tribe,String country) {
         this.first_name = first_name;
         this.middle_name = middle_name;
         this.last_name = last_name;
@@ -104,6 +105,7 @@ public class PatientInformation {
         this.gender = gender;
         this.ssn = ssn;
         this.mdn = MDN;
+        this.country = country;
         this.principal_tribe = principal_tribe;
     }
     public Long getId() {

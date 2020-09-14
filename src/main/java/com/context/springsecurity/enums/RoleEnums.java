@@ -1,6 +1,6 @@
-package com.context.springsecurity.domain;
+package com.context.springsecurity.enums;
 
-public enum ERole {
+public enum RoleEnums {
 	ROLE_USER,
     ROLE_MODERATOR,
     ROLE_ADMIN,
