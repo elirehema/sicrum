@@ -33,10 +33,6 @@ import java.util.Optional;
  */
 @Repository
 public class PatientInformationServicesImpl implements PatientInformationServices {
-
-    @Autowired
-    SessionFactory sessionFactory;
-
     @Autowired
     private PatientInformationRepository patientInformationRepository;
 
