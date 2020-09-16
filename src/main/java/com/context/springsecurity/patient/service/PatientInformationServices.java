@@ -1,7 +1,9 @@
 package com.context.springsecurity.patient.service;
 
+import com.context.springsecurity.contacts.domain.ContactsInformation;
 import com.context.springsecurity.patient.domain.PatientInformation;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,6 +27,7 @@ import java.util.Optional;
  * under the License.
  */
 @Component
+@Service
 public interface PatientInformationServices {
     public List<PatientInformation> retrieveAllPatients();
 
@@ -34,5 +37,5 @@ public interface PatientInformationServices {
 
     public Optional<PatientInformation> retrievePatientById(Long id);
 
-    public PatientInformation updatePatientContacts(PatientInformation patientInformation);
+    public ContactsInformation updatePatientContacts(Long patientId, ContactsInformation contactsInformationRequest);
 }

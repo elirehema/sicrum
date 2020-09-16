@@ -59,12 +59,19 @@ public class PatientInformationServicesImpl implements PatientInformationService
     }
 
     @Override
-    public PatientInformation updatePatientContacts(PatientInformation patientInformationRequest) {
-          patientInformationRepository.findById(patientInformationRequest.getId()).map(it-> {
-          // contactsInformationService.createNewContact(patientInformationRequest.getContactsInformation());
-           return null;
-         });
+    public ContactsInformation updatePatientContacts(Long patientId, ContactsInformation contactsInformationRequest) {
+        return patientInformationRepository.findById(patientId).map(patientInformation -> {
+            ContactsInformation contactsInformation = new ContactsInformation();
+            contactsInformation = contactsInformationRequest;
+            contactsInformation.setPatientInformation(patientInformation);
+            contactsInformationService.createNewContact(contactsInformation);
 
-          return patientInformationRequest;
+            //patientInformation.setContactsInformation(contactsInformationRequest);
+           // patientInformationRepository.save(patientInformation);
+           return contactsInformationRequest;
+         }).orElseGet(() -> {
+
+            return null;
+        });
     }
 }

@@ -76,38 +76,7 @@ public class PatientInformation {
     @Column(length = 20)
     private String country;
 
-    @OneToOne(
-            mappedBy = "patientInformation" ,
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL
-    )
-    private PatientMiscInfo patientMiscInfo;
-    @OneToOne(
-            mappedBy = "patientInformation" ,
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL
-    )
-    @JoinColumn(unique = true)
-    private ContactsInformation contactsInformation;
 
-
-    public PatientInformation(){}
-    public PatientInformation(
-            String first_name, String middle_name, String last_name, String suffix,
-            String ethnicity,  String dob,  String gender, String ssn,  String MDN,
-            String principal_tribe,String country) {
-        this.first_name = first_name;
-        this.middle_name = middle_name;
-        this.last_name = last_name;
-        this.suffix = suffix;
-        this.ethnicity = ethnicity;
-        this.dob = dob;
-        this.gender = gender;
-        this.ssn = ssn;
-        this.mdn = MDN;
-        this.country = country;
-        this.principal_tribe = principal_tribe;
-    }
     public Long getId() {
         return id;
     }
@@ -156,19 +125,4 @@ public class PatientInformation {
         return country;
     }
 
-    public ContactsInformation getContactsInformation() {
-        return contactsInformation;
-    }
-
-    public PatientMiscInfo getPatientMiscInfo() {
-        return patientMiscInfo;
-    }
-
-    public void setContactsInformation(ContactsInformation contactsInformation) {
-        this.contactsInformation = contactsInformation;
-    }
-
-    public void setPatientMiscInfo(PatientMiscInfo patientMiscInfo) {
-        this.patientMiscInfo = patientMiscInfo;
-    }
 }

@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication(scanBasePackages = "com.context*")
+@SpringBootApplication(scanBasePackages = "com.context.springsecurity")
 @ComponentScan
 public class BaseApplication {
 
