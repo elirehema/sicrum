@@ -5,7 +5,9 @@ import com.context.springsecurity.contacts.services.ContactsInformationService;
 import com.context.springsecurity.patient.domain.PatientInformation;
 import com.context.springsecurity.patient.repository.PatientInformationRepository;
 import com.context.springsecurity.repository.BookRepository;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,8 +31,11 @@ import java.util.Optional;
  * specific language governing permissions and limitations
  * under the License.
  */
-@Service
+@Repository
 public class PatientInformationServicesImpl implements PatientInformationServices {
+
+    @Autowired
+    SessionFactory sessionFactory;
 
     @Autowired
     private PatientInformationRepository patientInformationRepository;

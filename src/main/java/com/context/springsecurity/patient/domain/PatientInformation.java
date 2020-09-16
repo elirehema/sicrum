@@ -81,48 +81,95 @@ public class PatientInformation {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getFirst_name() {
         return first_name;
+    }
+
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
     }
 
     public String getMiddle_name() {
         return middle_name;
     }
 
+    public void setMiddle_name(String middle_name) {
+        this.middle_name = middle_name;
+    }
+
     public String getLast_name() {
         return last_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 
     public String getSuffix() {
         return suffix;
     }
 
+    public void setSuffix(String suffix) {
+        this.suffix = suffix;
+    }
+
     public String getEthnicity() {
         return ethnicity;
+    }
+
+    public void setEthnicity(String ethnicity) {
+        this.ethnicity = ethnicity;
     }
 
     public String getDOB() {
         return dob;
     }
 
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
     public String getGender() {
         return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getSsn() {
         return ssn;
     }
 
+    public void setSsn(String ssn) {
+        this.ssn = ssn;
+    }
+
     public String getMdn() {
         return mdn;
+    }
+
+    public void setMdn(String mdn) {
+        this.mdn = mdn;
     }
 
     public String getPrincipal_tribe() {
         return principal_tribe;
     }
 
+    public void setPrincipal_tribe(String principal_tribe) {
+        this.principal_tribe = principal_tribe;
+    }
+
     public String getCountry() {
         return country;
     }
 
+    public void setCountry(String country) {
+        this.country = country;
+    }
 }

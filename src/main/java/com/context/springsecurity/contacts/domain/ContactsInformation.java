@@ -64,41 +64,76 @@ public class ContactsInformation {
     private PatientInformation patientInformation;
 
 
-
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCity() {
         return city;
     }
 
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     public String getEmail_address() {
         return email_address;
+    }
+
+    public void setEmail_address(String email_address) {
+        this.email_address = email_address;
     }
 
     public String getIsReachable() {
         return isReachable;
     }
 
+    public void setIsReachable(String isReachable) {
+        this.isReachable = isReachable;
+    }
+
     public String gethome_phone() {
         return home_phone;
+    }
+
+    public void setHome_phone(String home_phone) {
+        this.home_phone = home_phone;
     }
 
     public String getPhysical_address() {
         return physical_address;
     }
 
+    public void setPhysical_address(String physical_address) {
+        this.physical_address = physical_address;
+    }
+
     public String getState() {
         return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getZipcode() {
         return zipcode;
     }
 
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
     public String getwork_phone() {
         return work_phone;
+    }
+
+    public void setWork_phone(String work_phone) {
+        this.work_phone = work_phone;
     }
 
     public PatientInformation getPatientInformation() {
