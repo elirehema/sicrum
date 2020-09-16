@@ -41,10 +41,7 @@ public class ContactsInformationServicesImpl implements ContactsInformationServi
     PatientInformationServices patientInformationServices;
 
     @Override
-    public ContactsInformation createNewContact(ContactsInformation contactsInformation) {
-        PatientInformation patientInformation = patientInformationServices.retrievePatientById(contactsInformation.getId()).get();
-        contactsInformation.setPatientInformation(patientInformation);
-        contactsInformation.setId(patientInformation.getId());
+    public ContactsInformation createNewContact( ContactsInformation contactsInformation) {
        return contactsInformationRepository.save(contactsInformation);
     }
 

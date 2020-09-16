@@ -3,6 +3,7 @@ package com.context.springsecurity.contacts.api;
 import com.context.springsecurity.contacts.domain.ContactsInformation;
 import com.context.springsecurity.contacts.services.ContactsInformationService;
 import com.context.springsecurity.patient.domain.PatientInformation;
+import com.context.springsecurity.patient.service.PatientInformationServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,6 +35,8 @@ public class ContactsInformationApiResources {
 
     @Autowired
     ContactsInformationService contactsInformationService;
+    @Autowired
+    PatientInformationServices patientInformationServices;
 
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -42,10 +45,10 @@ public class ContactsInformationApiResources {
         return contactsInformationService.retrieveAllContactsInformation();
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @ResponseBody
-    ContactsInformation createNew(@Valid @RequestBody ContactsInformation contactsInformationRequest) {
-        return contactsInformationService.createNewContact(contactsInformationRequest);
+    ContactsInformation createNew(@Valid @RequestBody ContactsInformation contactsInformationRequest, @PathVariable Long id) {
+        return patientInformationServices.updatePatientContacts(id,contactsInformationRequest);
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.POST)

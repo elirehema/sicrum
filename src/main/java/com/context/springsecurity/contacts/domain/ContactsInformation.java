@@ -28,7 +28,7 @@ import javax.validation.constraints.NotBlank;
 @Table(name = ModelNamesConstants.CONTACTS_INFO_TABLE)
 public class ContactsInformation {
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(length = 2)
@@ -58,26 +58,12 @@ public class ContactsInformation {
     @Column(length = 20)
     private String work_phone;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @MapsId
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "patient_id")
     private PatientInformation patientInformation;
 
-    public ContactsInformation(){}
-    public ContactsInformation(
-            Long id, String isReachable, @NotBlank String email_address, String zipcode, String city,
-            String state, String physical_address, String home_phone, String work_phone,PatientInformation patientInformation) {
-        this.id = id;
-        this.isReachable = isReachable;
-        this.email_address = email_address;
-        this.zipcode = zipcode;
-        this.city = city;
-        this.state = state;
-        this.physical_address = physical_address;
-        this.home_phone = home_phone;
-        this.work_phone = work_phone;
-        this.patientInformation = patientInformation;
-    }
+
 
     public Long getId() {
         return id;
@@ -121,9 +107,7 @@ public class ContactsInformation {
 
     public void setPatientInformation(PatientInformation patientInformation) {
         this.patientInformation = patientInformation;
+        this.id = patientInformation.getId();
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 }
