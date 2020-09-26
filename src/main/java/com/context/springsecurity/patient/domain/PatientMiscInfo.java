@@ -1,7 +1,6 @@
 package com.context.springsecurity.patient.domain;
 
 import com.context.springsecurity.constants.ModelNamesConstants;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
@@ -46,11 +45,6 @@ public class PatientMiscInfo {
     @Column(length = 60)
     private String  rehabilitation;
 
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "id")
-    private PatientInformation patientInformation;
-
     public PatientMiscInfo(){}
     public PatientMiscInfo(String citizenShip, String medical_enrollment, String employment, String school, String rehabilitation) {
         this.citizenShip = citizenShip;
@@ -62,10 +56,6 @@ public class PatientMiscInfo {
 
     public Long getId() {
         return id;
-    }
-
-    public PatientInformation getPatientInformation() {
-        return patientInformation;
     }
 
     public String getCitizenShip() {

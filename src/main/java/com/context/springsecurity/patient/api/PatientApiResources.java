@@ -1,7 +1,6 @@
 package com.context.springsecurity.patient.api;
 
-import com.context.springsecurity.domain.Books;
-import com.context.springsecurity.patient.domain.PatientInformation;
+import com.context.springsecurity.patient.domain.Patient;
 import com.context.springsecurity.patient.service.PatientInformationServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,19 +36,19 @@ public class PatientApiResources {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     @ResponseBody
-    List<PatientInformation> all() {
+    List<Patient> all() {
         return patientInformationServices.retrieveAllPatients();
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     @ResponseBody
-    PatientInformation createNewPatient(@Valid @RequestBody PatientInformation patientInformationRequest) {
+    Patient createNewPatient(@Valid @RequestBody Patient patientInformationRequest) {
         return patientInformationServices.createNewPatient(patientInformationRequest);
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.POST)
     @ResponseBody
-    List<PatientInformation> createNewPatients(@Valid @RequestBody List<PatientInformation> patientInformationListRequest){
+    List<Patient> createNewPatients(@Valid @RequestBody List<Patient> patientInformationListRequest){
         return patientInformationServices.createByPatientListIterate(patientInformationListRequest);
     }
 

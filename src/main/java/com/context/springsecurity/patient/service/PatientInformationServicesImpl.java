@@ -1,14 +1,12 @@
 package com.context.springsecurity.patient.service;
 
 import com.context.springsecurity.contacts.domain.ContactsInformation;
+import com.context.springsecurity.contacts.repository.ContactsInformationRepository;
 import com.context.springsecurity.contacts.services.ContactsInformationService;
-import com.context.springsecurity.patient.domain.PatientInformation;
+import com.context.springsecurity.patient.domain.Patient;
 import com.context.springsecurity.patient.repository.PatientInformationRepository;
-import com.context.springsecurity.repository.BookRepository;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,29 +31,32 @@ import java.util.Optional;
  */
 @Repository
 public class PatientInformationServicesImpl implements PatientInformationServices {
+
     @Autowired
     private PatientInformationRepository patientInformationRepository;
+    @Autowired
+    ContactsInformationRepository contactsInformationRepository;
 
     @Autowired
     ContactsInformationService contactsInformationService;
 
     @Override
-    public List<PatientInformation> retrieveAllPatients() {
+    public List<Patient> retrieveAllPatients() {
         return patientInformationRepository.findAll();
     }
 
     @Override
-    public PatientInformation createNewPatient(PatientInformation patientInformation) {
+    public Patient createNewPatient(Patient patientInformation) {
         return patientInformationRepository.save(patientInformation);
     }
 
     @Override
-    public List<PatientInformation> createByPatientListIterate(List<PatientInformation> patientInformationList) {
+    public List<Patient> createByPatientListIterate(List<Patient> patientInformationList) {
         return patientInformationRepository.saveAll(patientInformationList);
     }
 
     @Override
-    public Optional<PatientInformation> retrievePatientById(Long id) {
+    public Optional<Patient> retrievePatientById(Long id) {
         return patientInformationRepository.findById(id);
     }
 
@@ -64,14 +65,12 @@ public class PatientInformationServicesImpl implements PatientInformationService
         return patientInformationRepository.findById(patientId).map(patientInformation -> {
             ContactsInformation contactsInformation = new ContactsInformation();
             contactsInformation = contactsInformationRequest;
-            contactsInformation.setPatientInformation(patientInformation);
-            contactsInformationService.createNewContact(contactsInformation);
-
-            //patientInformation.setContactsInformation(contactsInformationRequest);
-           // patientInformationRepository.save(patientInformation);
-           return contactsInformationRequest;
-         }).orElseGet(() -> {
-
+            //contactsInformationService.createNewContact(contactsInformationRequest);
+            patientInformation.setContactsInformation(contactsInformationRequest);
+          //  contactsInformation.setPatient(patientInformation);
+            patientInformationRepository.save(patientInformation);
+            return contactsInformation;
+        }).orElseGet(() -> {
             return null;
         });
     }

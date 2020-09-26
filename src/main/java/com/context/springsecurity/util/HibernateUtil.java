@@ -1,12 +1,7 @@
-package com.context.springsecurity.patient.service;
+package com.context.springsecurity.util;
 
-import com.context.springsecurity.contacts.domain.ContactsInformation;
-import com.context.springsecurity.patient.domain.Patient;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -26,16 +21,20 @@ import java.util.Optional;
  * specific language governing permissions and limitations
  * under the License.
  */
-@Component
-@Service
-public interface PatientInformationServices {
-    public List<Patient> retrieveAllPatients();
+public class HibernateUtil {
+    private static final SessionFactory sessionFactory = buildSessionFactory();
+    private static SessionFactory buildSessionFactory() {
+        try {
+            // Create the SessionFactory from hibernate.cfg.xml
+            return new Configuration().configure().buildSessionFactory();
+        } catch (Throwable ex) {
+            // Make sure you log the exception, as it might be swallowed
+            System.err.println("Initial SessionFactory creation failed." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+    }
+    public static SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
 
-    public Patient createNewPatient(Patient patientInformation);
-
-    public List<Patient> createByPatientListIterate(List<Patient> patientInformationList);
-
-    public Optional<Patient> retrievePatientById(Long id);
-
-    public ContactsInformation updatePatientContacts(Long patientId, ContactsInformation contactsInformationRequest);
 }
