@@ -2,16 +2,12 @@ package com.context.springsecurity.contacts.services;
 
 import com.context.springsecurity.contacts.domain.ContactsInformation;
 import com.context.springsecurity.contacts.repository.ContactsInformationRepository;
-import com.context.springsecurity.patient.domain.PatientInformation;
-import com.context.springsecurity.patient.domain.PatientMiscInfo;
-import com.context.springsecurity.patient.repository.PatientInformationRepository;
 import com.context.springsecurity.patient.service.PatientInformationServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -37,8 +33,6 @@ public class ContactsInformationServicesImpl implements ContactsInformationServi
 
     @Autowired
     ContactsInformationRepository contactsInformationRepository;
-    @Autowired
-    PatientInformationServices patientInformationServices;
 
     @Override
     public ContactsInformation createNewContact( ContactsInformation contactsInformation) {

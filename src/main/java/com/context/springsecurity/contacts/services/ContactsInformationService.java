@@ -1,10 +1,7 @@
 package com.context.springsecurity.contacts.services;
 
 import com.context.springsecurity.contacts.domain.ContactsInformation;
-import com.context.springsecurity.patient.domain.PatientInformation;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

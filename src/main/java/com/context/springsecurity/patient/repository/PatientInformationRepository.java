@@ -1,7 +1,6 @@
 package com.context.springsecurity.patient.repository;
 
-import com.context.springsecurity.patient.domain.PatientInformation;
-import com.context.springsecurity.patient.domain.PatientMiscInfo;
+import com.context.springsecurity.patient.domain.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -22,6 +21,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * specific language governing permissions and limitations
  * under the License.
  */
-public interface PatientInformationRepository extends JpaRepository<PatientInformation,Long> {
-    PatientInformation getById(String id);
+public interface PatientInformationRepository extends JpaRepository<Patient,Long> {
+    Patient getById(String id);
 }

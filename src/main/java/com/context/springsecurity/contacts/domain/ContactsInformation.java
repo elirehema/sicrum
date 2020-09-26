@@ -1,7 +1,8 @@
 package com.context.springsecurity.contacts.domain;
 
 import com.context.springsecurity.constants.ModelNamesConstants;
-import com.context.springsecurity.patient.domain.PatientInformation;
+import com.context.springsecurity.patient.domain.Patient;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -28,7 +29,6 @@ import javax.validation.constraints.NotBlank;
 @Table(name = ModelNamesConstants.CONTACTS_INFO_TABLE)
 public class ContactsInformation {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(length = 2)
@@ -37,7 +37,6 @@ public class ContactsInformation {
     @NotBlank
     @Column(length = 50)
     private String email_address;
-
 
     @Column(length = 20)
     private String zipcode;
@@ -48,7 +47,6 @@ public class ContactsInformation {
     @Column(length = 100)
     private String state;
 
-
     @Column(length = 200)
     private String physical_address;
 
@@ -58,10 +56,11 @@ public class ContactsInformation {
     @Column(length = 20)
     private String work_phone;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @MapsId
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "contactsInformation")
     @JoinColumn(name = "patient_id")
-    private PatientInformation patientInformation;
+    private Patient patient;
+
 
 
     public Long getId() {
@@ -136,13 +135,16 @@ public class ContactsInformation {
         this.work_phone = work_phone;
     }
 
-    public PatientInformation getPatientInformation() {
-        return patientInformation;
+
+    @JsonManagedReference
+    public Patient getPatient() {
+        return patient;
     }
 
-    public void setPatientInformation(PatientInformation patientInformation) {
-        this.patientInformation = patientInformation;
-        this.id = patientInformation.getId();
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+        this.id = patient.getId();
+        this.patient.setContactsInformation(this);
     }
 
 }

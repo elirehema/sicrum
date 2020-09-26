@@ -2,6 +2,11 @@ package com.context.springsecurity.patient.domain;
 
 import com.context.springsecurity.constants.ModelNamesConstants;
 import com.context.springsecurity.contacts.domain.ContactsInformation;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -26,8 +31,7 @@ import javax.validation.constraints.NotBlank;
  */
 @Entity
 @Table(name = ModelNamesConstants.PATIENT_INFO_TABLE)
-public class PatientInformation {
-
+public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -75,6 +79,29 @@ public class PatientInformation {
     @NotBlank
     @Column(length = 20)
     private String country;
+
+    @OneToOne
+    @JoinColumn(name = "contact_id")
+    private  ContactsInformation contactsInformation;
+
+    public  Patient(){ }
+    public Patient( String first_name, String middle_name, String last_name,  String suffix,
+                    String ethnicity,  String dob,  String gender,  String ssn,  String mdn,
+                    String principal_tribe,  String country, ContactsInformation contactsInformation) {
+        this.first_name = first_name;
+        this.middle_name = middle_name;
+        this.last_name = last_name;
+        this.suffix = suffix;
+        this.ethnicity = ethnicity;
+        this.dob = dob;
+        this.gender = gender;
+        this.ssn = ssn;
+        this.mdn = mdn;
+        this.principal_tribe = principal_tribe;
+        this.country = country;
+        this.contactsInformation = contactsInformation;
+    }
+
 
 
     public Long getId() {
@@ -171,5 +198,23 @@ public class PatientInformation {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    @JsonBackReference
+    public ContactsInformation getContactsInformation() {
+        return contactsInformation;
+    }
+
+    public void setContactsInformation(ContactsInformation contactsInformation) {
+        if (contactsInformation == null){
+            if(this.contactsInformation != null){
+                this.contactsInformation.setPatient(null);
+            }
+            else{
+                contactsInformation.setPatient(this);
+            }
+            this.contactsInformation = contactsInformation;
+            this.contactsInformation.setPatient(this);
+        }
     }
 }

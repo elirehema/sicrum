@@ -2,7 +2,6 @@ package com.context.springsecurity.contacts.api;
 
 import com.context.springsecurity.contacts.domain.ContactsInformation;
 import com.context.springsecurity.contacts.services.ContactsInformationService;
-import com.context.springsecurity.patient.domain.PatientInformation;
 import com.context.springsecurity.patient.service.PatientInformationServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
