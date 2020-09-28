@@ -1,4 +1,9 @@
-package com.context.springsecurity.enums;
+package com.context.springsecurity.ward.beds.repository;
+
+import com.context.springsecurity.domain.BedSize;
+import com.context.springsecurity.enums.BedSizeEnums;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -18,9 +23,8 @@ package com.context.springsecurity.enums;
  * specific language governing permissions and limitations
  * under the License.
  */
-public enum BedSizeEnums {
-    SMALL_SIZE,
-    MEDIUM_SIZE,
-    LARGE_SIZE,
-    DEFAULT_SIZE
+@Repository
+public interface BedsRepository extends JpaRepository<BedSize, Long> {
+
+    Boolean existsByName(BedSizeEnums bedSizeEnums);
 }
