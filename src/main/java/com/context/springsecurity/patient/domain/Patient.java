@@ -1,12 +1,8 @@
 package com.context.springsecurity.patient.domain;
 
-import com.context.springsecurity.constants.ModelNamesConstants;
-import com.context.springsecurity.contacts.domain.ContactsInformation;
+import com.context.springsecurity.constants.DatabaseConstants;
+import com.context.springsecurity.patient.contacts.domain.ContactsInformation;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -30,11 +26,11 @@ import javax.validation.constraints.NotBlank;
  * under the License.
  */
 @Entity
-@Table(name = ModelNamesConstants.PATIENT_INFO_TABLE)
+@Table(name = DatabaseConstants.PATIENT_INFO_TABLE)
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "id", unique = true)
     private Long id;
 
     @NotBlank

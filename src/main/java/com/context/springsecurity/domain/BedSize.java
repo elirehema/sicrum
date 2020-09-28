@@ -1,6 +1,8 @@
-package com.context.springsecurity.patient.domain;
+package com.context.springsecurity.domain;
 
 import com.context.springsecurity.constants.DatabaseConstants;
+import com.context.springsecurity.enums.BedSizeEnums;
+import com.context.springsecurity.enums.RoleEnums;
 
 import javax.persistence.*;
 
@@ -23,43 +25,35 @@ import javax.persistence.*;
  * under the License.
  */
 @Entity
-@Table(name = DatabaseConstants.MISC_INFO_TABLE)
-public class PatientMiscInfo {
+@Table(name = DatabaseConstants.BED_SIZES)
+public class BedSize {
     @Id
-    @Column(name = "id")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-
+    @Enumerated(EnumType.STRING)
     @Column(length = 200)
-    private String  citizenShip;
+    private BedSizeEnums bedSizeEnums;
 
-    @Column(length = 100)
-    private String  medical_enrollment;
+    public BedSize() {}
 
-    @Column(length = 60)
-    private String  employment;
-
-    @Column(length = 60)
-    private String  school;
-
-    @Column(length = 60)
-    private String  rehabilitation;
-
-    public PatientMiscInfo(){}
-    public PatientMiscInfo(String citizenShip, String medical_enrollment, String employment, String school, String rehabilitation) {
-        this.citizenShip = citizenShip;
-        this.medical_enrollment = medical_enrollment;
-        this.employment = employment;
-        this.school = school;
-        this.rehabilitation = rehabilitation;
+    public BedSize(BedSizeEnums bedSizeEnums) {
+        this.bedSizeEnums = bedSizeEnums;
     }
 
-    public Long getId() {
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public String getCitizenShip() {
-        return citizenShip;
+    public void setBedSizeEnums(BedSizeEnums bedSizeEnums) {
+        this.bedSizeEnums = bedSizeEnums;
     }
 
+    public BedSizeEnums getBedSizeEnums() {
+        return bedSizeEnums;
+    }
 }

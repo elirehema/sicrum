@@ -1,4 +1,4 @@
-package com.context.springsecurity.constants;
+package com.context.springsecurity.enums;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -18,8 +18,9 @@ package com.context.springsecurity.constants;
  * specific language governing permissions and limitations
  * under the License.
  */
-public class ModelNamesConstants {
-    public static final String PATIENT_INFO_TABLE = "tb_patient";
-    public static final String MISC_INFO_TABLE = "tb_misc";
-    public static final String CONTACTS_INFO_TABLE = "tb_contacts";
+public enum  BedSizeEnums {
+    SMALL_SIZE,
+    MEDIUM_SIZE,
+    LARGE_SIZE,
+    DEFAULT_SIZE
 }

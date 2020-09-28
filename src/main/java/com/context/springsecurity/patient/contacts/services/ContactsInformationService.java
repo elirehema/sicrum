@@ -1,7 +1,9 @@
-package com.context.springsecurity.contacts.repository;
+package com.context.springsecurity.patient.contacts.services;
 
-import com.context.springsecurity.contacts.domain.ContactsInformation;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.context.springsecurity.patient.contacts.domain.ContactsInformation;
+import org.springframework.stereotype.Controller;
+
+import java.util.List;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -21,6 +23,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * specific language governing permissions and limitations
  * under the License.
  */
-public interface ContactsInformationRepository extends JpaRepository<ContactsInformation, Long> {
 
+@Controller
+public interface ContactsInformationService {
+    public ContactsInformation createNewContact(Long id, ContactsInformation contactsInformation);
+    public List<ContactsInformation> retrieveAllContactsInformation();
+    public List<ContactsInformation> createNewContactsByIteration(List<ContactsInformation> contactsInformationList);
 }

@@ -1,16 +1,13 @@
 package com.context.springsecurity.patient.service;
 
-import com.context.springsecurity.contacts.domain.ContactsInformation;
-import com.context.springsecurity.contacts.repository.ContactsInformationRepository;
-import com.context.springsecurity.contacts.services.ContactsInformationService;
+import com.context.springsecurity.patient.contacts.domain.ContactsInformation;
+import com.context.springsecurity.patient.contacts.repository.ContactsInformationRepository;
+import com.context.springsecurity.patient.contacts.services.ContactsInformationService;
 import com.context.springsecurity.patient.domain.Patient;
 import com.context.springsecurity.patient.repository.PatientInformationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.util.List;
 import java.util.Optional;
 
