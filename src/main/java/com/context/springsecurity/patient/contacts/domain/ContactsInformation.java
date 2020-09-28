@@ -1,6 +1,6 @@
-package com.context.springsecurity.contacts.domain;
+package com.context.springsecurity.patient.contacts.domain;
 
-import com.context.springsecurity.constants.ModelNamesConstants;
+import com.context.springsecurity.constants.DatabaseConstants;
 import com.context.springsecurity.patient.domain.Patient;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -26,10 +26,10 @@ import javax.validation.constraints.NotBlank;
  * under the License.
  */
 @Entity
-@Table(name = ModelNamesConstants.CONTACTS_INFO_TABLE)
+@Table(name = DatabaseConstants.CONTACTS_INFO_TABLE)
 public class ContactsInformation {
     @Id
-    @Column(name = "id")
+    @Column(name = "id", unique = true)
     private Long id;
 
     @Column(length = 2)
@@ -63,9 +63,11 @@ public class ContactsInformation {
     private Patient patient;
 
     public ContactsInformation(){}
-    public ContactsInformation( Boolean isReachable,String email_address,
-                               String zipcode, String city, String state, String physical_address,
-                               String home_phone, String work_phone, Patient patient) {
+    public ContactsInformation(
+            Boolean isReachable,String email_address,
+            String zipcode, String city, String state,
+            String physical_address, String home_phone,
+            String work_phone, Patient patient) {
         this.isReachable = isReachable;
         this.email_address = email_address;
         this.zipcode = zipcode;

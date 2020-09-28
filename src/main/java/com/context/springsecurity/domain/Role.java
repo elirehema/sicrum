@@ -1,11 +1,12 @@
 package com.context.springsecurity.domain;
 
+import com.context.springsecurity.constants.DatabaseConstants;
 import com.context.springsecurity.enums.RoleEnums;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "roles", uniqueConstraints = {@UniqueConstraint(columnNames = "name")})
+@Table(name = DatabaseConstants.ROLES_TABLE, uniqueConstraints = {@UniqueConstraint(columnNames = "name")})
 
 public class Role {
 	@Id
@@ -13,7 +14,7 @@ public class Role {
 	private Integer id;
 
 	@Enumerated(EnumType.STRING)
-	@Column(length = 20)
+	@Column(length = 200)
 	private RoleEnums name;
 
 	public Role() {
