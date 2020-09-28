@@ -26,7 +26,7 @@ import java.util.List;
 
 @Controller
 public interface ContactsInformationService {
-    public ContactsInformation createNewContact(ContactsInformation contactsInformation);
+    public ContactsInformation createNewContact(Long id, ContactsInformation contactsInformation);
     public List<ContactsInformation> retrieveAllContactsInformation();
     public List<ContactsInformation> createNewContactsByIteration(List<ContactsInformation> contactsInformationList);
 }

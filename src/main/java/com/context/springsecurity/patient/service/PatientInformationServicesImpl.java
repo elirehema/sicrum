@@ -8,6 +8,9 @@ import com.context.springsecurity.patient.repository.PatientInformationRepositor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,11 +66,15 @@ public class PatientInformationServicesImpl implements PatientInformationService
     @Override
     public ContactsInformation updatePatientContacts(Long patientId, ContactsInformation contactsInformationRequest) {
         return patientInformationRepository.findById(patientId).map(patientInformation -> {
-            ContactsInformation contactsInformation = new ContactsInformation();
-            contactsInformation = contactsInformationRequest;
-            //contactsInformationService.createNewContact(contactsInformationRequest);
-            patientInformation.setContactsInformation(contactsInformationRequest);
-          //  contactsInformation.setPatient(patientInformation);
+            ContactsInformation contactsInformation = new ContactsInformation(
+                    contactsInformationRequest.getIsReachable(), contactsInformationRequest.getEmail_address(),
+                    contactsInformationRequest.getZipcode(), contactsInformationRequest.getCity(),
+                    contactsInformationRequest.getState(), contactsInformationRequest.getPhysical_address(),
+                    contactsInformationRequest.gethome_phone(), contactsInformationRequest.getwork_phone(),patientInformation
+            );
+            patientInformation.setContactsInformation(contactsInformation);
+            contactsInformation.setPatient(patientInformation);
+
             patientInformationRepository.save(patientInformation);
             return contactsInformation;
         }).orElseGet(() -> {

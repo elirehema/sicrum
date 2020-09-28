@@ -33,7 +33,8 @@ import javax.validation.constraints.NotBlank;
 @Table(name = ModelNamesConstants.PATIENT_INFO_TABLE)
 public class Patient {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
 
     @NotBlank
@@ -80,8 +81,7 @@ public class Patient {
     @Column(length = 20)
     private String country;
 
-    @OneToOne
-    @JoinColumn(name = "contact_id")
+    @OneToOne(mappedBy = "patient",cascade = CascadeType.ALL)
     private  ContactsInformation contactsInformation;
 
     public  Patient(){ }
@@ -206,15 +206,6 @@ public class Patient {
     }
 
     public void setContactsInformation(ContactsInformation contactsInformation) {
-        if (contactsInformation == null){
-            if(this.contactsInformation != null){
-                this.contactsInformation.setPatient(null);
-            }
-            else{
-                contactsInformation.setPatient(this);
-            }
-            this.contactsInformation = contactsInformation;
-            this.contactsInformation.setPatient(this);
-        }
+        this.contactsInformation = contactsInformation;
     }
 }

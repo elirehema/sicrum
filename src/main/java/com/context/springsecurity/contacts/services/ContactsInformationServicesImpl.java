@@ -3,6 +3,9 @@ package com.context.springsecurity.contacts.services;
 import com.context.springsecurity.contacts.domain.ContactsInformation;
 import com.context.springsecurity.contacts.repository.ContactsInformationRepository;
 import com.context.springsecurity.patient.service.PatientInformationServices;
+import com.context.springsecurity.security.jwt.AuthEntryPointJwt;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -30,13 +33,16 @@ import java.util.List;
 @Controller
 @Service
 public class ContactsInformationServicesImpl implements ContactsInformationService {
+    private static final Logger logger = LoggerFactory.getLogger(ContactsInformationServicesImpl.class);
 
     @Autowired
     ContactsInformationRepository contactsInformationRepository;
 
     @Override
-    public ContactsInformation createNewContact( ContactsInformation contactsInformation) {
-       return contactsInformationRepository.save(contactsInformation);
+    public ContactsInformation createNewContact(Long id, ContactsInformation contactsInformation) {
+        contactsInformation.setId(id);
+        logger.info(contactsInformation.toString());
+       return contactsInformation;//contactsInformationRepository.save(contactsInformation);
     }
 
     @Override

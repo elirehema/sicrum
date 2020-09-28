@@ -29,10 +29,11 @@ import javax.validation.constraints.NotBlank;
 @Table(name = ModelNamesConstants.CONTACTS_INFO_TABLE)
 public class ContactsInformation {
     @Id
+    @Column(name = "id")
     private Long id;
 
     @Column(length = 2)
-    private String isReachable;
+    private Boolean isReachable;
 
     @NotBlank
     @Column(length = 50)
@@ -57,9 +58,24 @@ public class ContactsInformation {
     private String work_phone;
 
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "contactsInformation")
-    @JoinColumn(name = "patient_id")
+    @OneToOne
+    @MapsId
     private Patient patient;
+
+    public ContactsInformation(){}
+    public ContactsInformation( Boolean isReachable,String email_address,
+                               String zipcode, String city, String state, String physical_address,
+                               String home_phone, String work_phone, Patient patient) {
+        this.isReachable = isReachable;
+        this.email_address = email_address;
+        this.zipcode = zipcode;
+        this.city = city;
+        this.state = state;
+        this.physical_address = physical_address;
+        this.home_phone = home_phone;
+        this.work_phone = work_phone;
+        this.patient = patient;
+    }
 
 
 
@@ -87,11 +103,11 @@ public class ContactsInformation {
         this.email_address = email_address;
     }
 
-    public String getIsReachable() {
+    public Boolean getIsReachable() {
         return isReachable;
     }
 
-    public void setIsReachable(String isReachable) {
+    public void setIsReachable(Boolean isReachable) {
         this.isReachable = isReachable;
     }
 
@@ -143,8 +159,6 @@ public class ContactsInformation {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
-        this.id = patient.getId();
-        this.patient.setContactsInformation(this);
     }
 
 }
