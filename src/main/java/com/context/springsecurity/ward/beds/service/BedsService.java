@@ -1,4 +1,4 @@
-package com.context.springsecurity.enums;
+package com.context.springsecurity.ward.beds.service;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -18,9 +18,5 @@ package com.context.springsecurity.enums;
  * specific language governing permissions and limitations
  * under the License.
  */
-public enum BedSizeEnums {
-    SMALL_SIZE,
-    MEDIUM_SIZE,
-    LARGE_SIZE,
-    DEFAULT_SIZE
+public interface BedsService {
 }

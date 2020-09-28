@@ -25,7 +25,7 @@ import javax.persistence.*;
  * under the License.
  */
 @Entity
-@Table(name = DatabaseConstants.BED_SIZES)
+@Table(name = DatabaseConstants.BED_SIZES, uniqueConstraints = {@UniqueConstraint(columnNames = "name")})
 public class BedSize {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,12 +33,13 @@ public class BedSize {
 
     @Enumerated(EnumType.STRING)
     @Column(length = 200)
-    private BedSizeEnums bedSizeEnums;
+    private BedSizeEnums name;
 
-    public BedSize() {}
+    public BedSize() {
+    }
 
-    public BedSize(BedSizeEnums bedSizeEnums) {
-        this.bedSizeEnums = bedSizeEnums;
+    public BedSize(BedSizeEnums name) {
+        this.name = name;
     }
 
     public void setId(Integer id) {
@@ -49,11 +50,11 @@ public class BedSize {
         return id;
     }
 
-    public void setBedSizeEnums(BedSizeEnums bedSizeEnums) {
-        this.bedSizeEnums = bedSizeEnums;
+    public void setName(BedSizeEnums name) {
+        this.name = name;
     }
 
-    public BedSizeEnums getBedSizeEnums() {
-        return bedSizeEnums;
+    public BedSizeEnums getName() {
+        return name;
     }
 }
